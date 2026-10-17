@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbería a Domicilio | Estilo Profesional en tu Casa</title>
+<meta name="description" content="Servicio de barbería profesional a domicilio. Cortes, afeitados y arreglo de barba en la comodidad de tu hogar. Agenda por WhatsApp.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --negro: #0a0a0a;
+    --carbon: #1a1a1a;
+    --dorado: #c9a227;
+    --dorado-claro: #e6c34a;
+    --gris: #8a8a8a;
+    --blanco: #f5f5f5;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    line-height: 1.6;
+  }
+  
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+  }
+  
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dorado);
+    letter-spacing: 2px;
+  }
+  
+  .logo span { color: var(--blanco); }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+  }
+  
+  nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover { color: var(--dorado); }
+  
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 5% 60px;
+    background: 
+      linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.95)),
+      radial-gradient(circle at 50% 30%, #2a2a2a, #0a0a0a);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '✂';
+    position: absolute;
+    font-size: 40rem;
+    opacity: 0.03;
+    color: var(--dorado);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  
+  .badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid var(--dorado);
+    border-radius: 50px;
+    color: var(--dorado);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+  
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  
+  .hero h1 span { color: var(--dorado); }
+  
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--gris);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #25D366;
+    color: #fff;
+    padding: 16px 38px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+  }
+  
+  .btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+  }
+  
+  .btn-whatsapp svg { width: 24px; height: 24px; }
+  
+  /* SECCIONES */
+  section { padding: 90px 5%; }
+  
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 15px;
+  }
+  
+  .section-title span { color: var(--dorado); }
+  
+  .section-sub {
+    text-align: center;
+    color: var(--gris);
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* SERVICIOS */
+  .servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background: var(--carbon);
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 35px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--dorado), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--dorado);
+  }
+  
+  .card:hover::before { opacity: 1; }
+  
+  .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dorado-claro);
+  }
+  
+  .card p {
+    color: var(--gris);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  
+  .precio {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blanco);
+  }
+  
+  .precio small {
+    font-size: 0.85rem;
+    color: var(--gris);
+    font-weight: 400;
+  }
+  
+  /* CÓMO FUNCIONA */
+  .pasos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    counter-reset: paso;
+  }
+  
+  .paso {
+    text-align: center;
+    position: relative;
+  }
+  
+  .paso-num {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--carbon);
+    border: 2px solid var(--dorado);
+    color: var(--dorado);
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  
+  .paso h3 { margin-bottom: 10px; font-size: 1.1rem; }
+  .paso p { color: var(--gris); font-size: 0.9rem; }
+  
+  /* SOBRE MÍ */
+  .sobre {
+    background: var(--carbon);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #2a2a2a;
+  }
+  
+  .sobre-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dorado), #8a6d10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    flex-shrink: 0;
+    margin: 0 auto;
+  }
+  
+  .sobre-texto { flex: 1; min-width: 260px; }
+  
+  .sobre-texto h3 {
+    color: var(--dorado);
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .sobre-texto p { color: #ccc; margin-bottom: 12px; }
+  
+  /* TESTIMONIOS */
+  .testimonios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .testimonio {
+    background: var(--carbon);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid #2a2a2a;
+  }
+  
+  .estrellas { color: var(--dorado); margin-bottom: 12px; }
+  
+  .testimonio p {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+  }
+  
+  .testimonio-autor {
+    font-weight: 700;
+    color: var(--dorado-claro);
+    font-size: 0.9rem;
+  }
+  
+  /* CTA FINAL */
+  .cta-final {
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    border-top: 1px solid rgba(201,162,39,0.3);
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+  }
+  
+  .cta-final h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 15px;
+  }
+  
+  .cta-final h2 span { color: var(--dorado); }
+  
+  .cta-final p {
+    color: var(--gris);
+    margin-bottom: 35px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* FOOTER */
+  footer {
+    background: var(--negro);
+    text-align: center;
+    padding: 40px 5%;
+    color: var(--gris);
+    font-size: 0.9rem;
+    border-top: 1px solid #1f1f1f;
+  }
+  
+  footer .logo { margin-bottom: 15px; }
+  
+  /* WHATSAPP FLOTANTE */
+  .wa-flotante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 25px rgba(37,211,102,0.5);
+    z-index: 999;
+    transition: transform 0.3s;
+    animation: pulse 2s infinite;
+  }
+  
+  .wa-flotante:hover { transform: scale(1.1); }
+  
+  .wa-flotante svg { width: 32px; height: 32px; fill: #fff; }
+  
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8); }
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .hero { padding-top: 100px; }
+    .sobre { padding: 35px 25px; text-align: center; }
+    section { padding: 60px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">BARBER<span>HOME</span></div>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="badge">Servicio a domicilio</div>
+    <h1>Tu barbería <span>donde tú estés</span></h1>
+    <p>Cortes profesionales, arreglo de barba y afeitado clásico en la comodidad de tu hogar. Sin filas, sin esperas, con estilo.</p>
+    <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20agendar%20una%20hora%20para%20un%20corte%20a%20domicilio" 
+       class="btn-whatsapp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Agendar por WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <h2 class="section-title">Nuestros <span>Servicios</span></h2>
+  <p class="section-sub">Precios claros, sin sorpresas. El servicio se realiza en tu domicilio.</p>
+  
+  <div class="servicios">
+    <div class="card">
+      <div class="card-icon">✂️</div>
+      <h3>Corte Clásico</h3>
+      <p>Corte a tijera o máquina, lavado y peinado incluido. Estilo a tu medida.</p>
+      <div class="precio">$8.000 <small>/ servicio</small></div>
+    </div>
+    
+    <div class="card">
+      <div class="card-icon">🧔</div>
+      <h3>Corte + Barba</h3>
+      <p>Corte de cabello + perfilado y arreglo de barba con toalla caliente.</p>
+      <div class="precio">$12.000 <small>/ servicio</small></div>
+    </div>
+    
+    <div class="card">
+      <div class="card-icon">🪒</div>
+      <h3>Afeitado Clásico</h3>
+      <p>Afeitado tradicional con navaja, toalla caliente y aceites hidratantes.</p>
+      <div class="precio">$7.000 <small>/ servicio</small></div>
+    </div>
+    
+    <div class="card">
+      <div class="card-icon">👶</div>
+      <h3>Corte Infantil</h3>
+      <p>Corte para los más pequeños de la casa, con paciencia y estilo.</p>
+      <div class="precio">$6.000 <small>/ servicio</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como" style="background: var(--carbon);">
+  <h2 class="section-title">¿Cómo <span>funciona</span>?</h2>
+  <p class="section-sub">Agendar es muy fácil. En 3 pasos tendrás tu corte listo.</p>
+  
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <h3>Escríbeme por WhatsApp</h3>
+      <p>Cuéntame qué servicio necesitas y tu dirección.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <h3>Coordinamos día y hora</h3>
+      <p>Elegimos el horario que mejor te acomode.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <h3>Llego a tu casa</h3>
+      <p>Llevo todo el equipo profesional. Tú solo disfruta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre">
+  <h2 class="section-title">Sobre <span>mí</span></h2>
+  <p class="section-sub">Pasión por el oficio y ganas de crecer contigo.</p>
+  
+  <div class="sobre">
+    <div class="sobre-avatar">💈</div>
+    <div class="sobre-texto">
+      <h3>Hola, soy [Tu Nombre]</h3>
+      <p>Soy barbero y estoy comenzando este emprendimiento con mucho esfuerzo y dedicación. Me apasiona el arte del corte y quiero llevarte la experiencia de una barbería profesional hasta tu puerta.</p>
+      <p>Trabajo con herramientas de calidad, higiene garantizada y, sobre todo, mucha atención al detalle. Cada cliente es importante para mí, y tu confianza es lo que me ayuda a crecer.</p>
+      <p><strong style="color: var(--dorado);">📍 Zona de atención:</strong> [Tu comuna / sector] y alrededores</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section style="background: var(--carbon);">
+  <h2 class="section-title">Lo que dicen <span>mis clientes</span></h2>
+  <p class="section-sub">La mejor publicidad es un cliente satisfecho.</p>
+  
+  <div class="testimonios">
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Excelente atención, llegó puntual y el corte quedó impecable. Muy cómodo no tener que salir de casa."</p>
+      <div class="testimonio-autor">— Cristian M.</div>
+    </div>
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Gran profesional, muy dedicado. El arreglo de barba con toalla caliente fue una experiencia distinta."</p>
+      <div class="testimonio-autor">— Felipe R.</div>
+    </div>
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Le cortó el pelo a mi hijo y fue súper paciente. Recomendado 100%."</p>
+      <div class="testimonio-autor">— Andrea P.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="contacto" class="cta-final">
+  <h2>¿Listo para tu <span>próximo corte</span>?</h2>
+  <p>Escríbeme ahora por WhatsApp y coordinamos tu hora. Atención de lunes a sábado.</p>
+  <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20agendar%20una%20hora%20para%20un%20corte%20a%20domicilio" 
+     class="btn-whatsapp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Agendar mi hora
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">BARBER<span>HOME</span></div>
+  <p>Barbería a domicilio · [Tu comuna], Chile</p>
+  <p style="margin-top: 10px; font-size: 0.8rem;">© 2026 BarberHome. Todos los derechos reservados.</p>
+</footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/56912345678?text=Hola!%20Quiero%20agendar%20una%20hora%20para%20un%20corte%20a%20domicilio" 
+   class="wa-flotante" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+</body>
+</html>
